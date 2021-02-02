@@ -4,11 +4,13 @@ void compute(int PA, int PB, float G1, float G2){
     int popA = PA, popB =PB, count = 0;
     bool flag = false;
     do {
-        popA = popA + (popA*G1/100);
-        popB = popB + (popB*G2/100);
+        popA = popA*(1+(G1/100));
+        //std::cout<<popA<<std::endl; //for test proposes
+        popB = popB*(1+(G2/100));
+        //std::cout<<popB<<std::endl; //for test proposes
         count++;
         if (count>100) flag = true;
-    } while (popA<=popB || count <= 100);
+    } while (popA<=popB && count <= 100);
     if (flag == false){
         std::cout << count << " anos." <<std::endl;
     } else std::cout << "Mais de 1 seculo." << std::endl;
